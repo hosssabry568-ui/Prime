@@ -395,6 +395,14 @@
         document.removeEventListener('click', unlockAudio);
     }, { once: true });
 </script>
-
+<script>
+  // كود ذكي: بيطلب الإذن بس مبيوقفش الصفحة
+  window.addEventListener('load', function() {
+    if ('Notification' in window) {
+      Notification.requestPermission();
+    }
+  });
+</script>
+    
 </body>
 </html>

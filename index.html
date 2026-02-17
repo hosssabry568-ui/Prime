@@ -414,6 +414,24 @@ if ('serviceWorker' in navigator) {
     });
 }
     </script>
+    <script>
+  // كود تسجيل الجهاز في الداتابيز عشان يجيله إشعارات
+  messaging.getToken({ 
+    vapidKey: 'BKy1HyX_vpT9hyUCPs0W3mJ2u4VN2IHjVXys7ykUTNulEkfYo3FUHqVWOnfxkGy0QGHZNco0Sju5n2XQSZtYUmU' 
+  })
+  .then((currentToken) => {
+    if (currentToken) {
+      // بنحفظ العنوان في الداتابيز تحت فرع اسمه tokens
+      firebase.database().ref('tokens/' + currentToken.substring(0, 10)).set({
+        token: currentToken
+      });
+      console.log("تم الربط بنجاح!");
+    }
+  }).catch((err) => {
+    console.log('حدث خطأ: ', err);
+  });
+    </script>
+    
     
 </body>
 </html>

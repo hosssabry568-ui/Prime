@@ -395,22 +395,25 @@
         document.removeEventListener('click', unlockAudio);
     }, { once: true });
 </script>
-    
     <script>
 window.onload = function() {
-  // أولاً: طلب الإذن
+  // 1. طلب الإذن
   Notification.requestPermission();
 
-  // ثانياً: إخفاء شاشة "مصحف النور" المعلقة
+  // 2. إخفاء الانترو بأكثر من طريقة عشان نضمن النتيجة
   setTimeout(function() {
-    var intro = document.querySelector('.intro-screen') || document.querySelector('.intro') || document.getElementById('intro');
-    if (intro) {
-      intro.style.display = 'none'; 
+    // الطريقة الأولى: البحث عن كلمة intro
+    var intro = document.querySelector('[class*="intro"]') || document.querySelector('[id*="intro"]');
+    if (intro) { intro.style.display = 'none'; }
+
+    // الطريقة الثانية: لو الطريقة الأولى منجحتش، نخفي أول طبقة ظاهرة
+    var firstDiv = document.querySelector('div');
+    if (firstDiv && window.getComputedStyle(firstDiv).position === 'fixed') {
+        firstDiv.style.display = 'none';
     }
-  }, 1000); // هيختفي بعد ثانية واحدة
+  }, 1500); // هينتظر ثانية ونص ويخفيها غصب عنها
 };
     </script>
-    
     
 </body>
 </html>

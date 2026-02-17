@@ -1,0 +1,17 @@
+{
+  "name": "مصحف النور",
+  "short_name": "المصحف",
+  "description": "تطبيق مصحف النور للورد اليومي والإشعارات",
+  "start_url": "/Prime/index.html",
+  "display": "standalone",
+  "background_color": "#062115",
+  "theme_color": "#062115",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/2904/2904843.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
